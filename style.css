@@ -5,7 +5,7 @@
 }
 body {
     height: 100vh;
-    width: 100vw;
+    width: calc(100vw - 30px);
     background: #b8b8b8;
 }
 
@@ -34,9 +34,14 @@ header .titulo{
 main {
     display: grid;
     place-items: center;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
     padding:40px;
+    background:#e6e6e6;
+    border-radius: 10px;
+    width:80%;
+    margin:0 auto;
+    box-shadow: 0 5px 5px #000000c9;
 }
 .cards {
     background: #0080BA;
@@ -49,6 +54,7 @@ main {
     transform-style: preserve-3d;
     transition: 0.5s;
     cursor: pointer;
+    border-radius: 5px;
 }
 .cards.virar {
     transform: rotateY(180deg);
@@ -66,6 +72,7 @@ main {
     justify-content: center;
     align-items: center;
     backface-visibility: hidden;
+    border-radius: 5px;
 }
 .cards > i {
     font-size: 40px;
@@ -79,7 +86,7 @@ main {
 
 #btn-reset{
     display:block;
-    margin:auto;
+    margin:40px auto;
     width:200px;
     height:40px;
     background:transparent;
