@@ -84,6 +84,11 @@ main {
     transform: rotateY(180deg);
 }
 
+.name{
+    color:white;
+    font-size:30px;
+}
+
 #btn-reset{
     display:block;
     margin:40px auto;

@@ -14,16 +14,28 @@ document.addEventListener('DOMContentLoaded', () => {
         "wolf",
     ];
 
-    const cardsArray = [...imgs, ...imgs];
+    // Cria pares de imagem e nome
+    const cardsArray = [];
+    imgs.forEach(img => {
+        cardsArray.push({ type: 'image', content: img });
+        cardsArray.push({ type: 'name', content: img });
+    });
 
     shuffle(cardsArray);
 
     let cardsHTML = '';
     cardsArray.forEach((card) => {
-        cardsHTML += `<div class="cards">
-            <i class="bi bi-question-circle"></i>
-            <div class="img" style="background:url('cards/${card}.jpeg')"></div>
-        </div>`;
+        if (card.type === 'image') {
+            cardsHTML += `<div class="cards">
+                <i class="bi bi-question-circle"></i>
+                <div class="img" id="${card.content}" style="background:url('cards/${card.content}.jpeg')"></div>
+            </div>`;
+        } else {
+            cardsHTML += `<div class="cards">
+                <i class="bi bi-question-circle"></i>
+                <div class="img name" id="${card.content}">${card.content}</div>
+            </div>`;
+        }
     });
     main.innerHTML = cardsHTML;
 
@@ -57,8 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function verificarCorrespondencia() {
-        let corresponde = primeiraCarta.querySelector('.img').style.backgroundImage === segundaCarta.querySelector('.img').style.backgroundImage;
-
+        let corresponde = primeiraCarta.querySelector('.img, .name').id === segundaCarta.querySelector('.img, .name').id;
         corresponde ? desativarCartas() : desvirarCartas();
     }
 
@@ -90,3 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cartas.forEach(carta => carta.addEventListener('click', virarCarta));
 });
+
+const btnResetar = document.querySelector("#btn-reset")
+btnResetar.addEventListener("click", ()=>{
+    location.reload()
+})
